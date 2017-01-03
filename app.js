@@ -63,7 +63,7 @@ var addCard = function() {
             }]).then(function(answer) {
                 var newBasic = new BasicFlashcard(answer.front, answer.back);
                 newBasic.create();
-                whatsNext();
+                nextChoice();
             });
         } else if (answer.cardType === 'cloze-flashcard') {
             inquirer.prompt([{
@@ -94,7 +94,7 @@ var addCard = function() {
                 if (text.includes(cloze)) {
                     var newCloze = new ClozeFlashcard(text, cloze);
                     newCloze.create();
-                    whatsNext();
+                    nextChoice();
                 } else {
                     console.log('The fill in the blank text is wrong');
                     addCard();
@@ -105,7 +105,7 @@ var addCard = function() {
 };
 
 var nextChoice = function() {
-    // get user input
+    // next choice from user
     inquirer.prompt([{
         name: 'nextAction',
         message: 'Are you making a basic or cloze flashcard, viewing your cards, or trying to exit?',
@@ -117,7 +117,6 @@ var nextChoice = function() {
         }, {
             name: 'exit'
         }]
-    // once user input is received
     }]).then(function(answer) {
         if (answer.nextAction === 'create-new-card') {
             addCard();
@@ -132,7 +131,7 @@ var nextChoice = function() {
 var showCards = function() {
     // read the log.txt file
     fs.readFile('./log.txt', 'utf8', function(error, data) {
-        //if there is an error, log it
+        //logs the error
         if (error) {
             console.log('Error occurred: ' + error);
         }
@@ -146,8 +145,10 @@ var showCards = function() {
     });
 };
 
+//shows the question from the text file
 var showQuestion = function(array, index) {
     question = array[index];
+    //goes through the text file
     var parsedQuestion = JSON.parse(question);
     var questionText;
     var correctReponse;

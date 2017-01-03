@@ -2,7 +2,7 @@
 var fs = require("fs");
 
 //export basic
-module.exports = BasicFlashcard;
+module.exports = basicCard;
 
 // constructor for basic flashcards
 function basicCard(front, back) {
