@@ -1,0 +1,17 @@
+{
+  "name": "flashcard-generator",
+  "version": "1.0.0",
+  "description": "Flashcard generator homework assignment",
+  "main": "generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdamSidor/FlashcardGenerator"
+  },
+  "author": "Adam Sidor",
+  "dependencies": {
+    "inquirer": "^2.0.0"
+  }
+}
